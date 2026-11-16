@@ -1,0 +1,14 @@
+# backups & junk
+*.bak
+*.log
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# never commit secrets
+*.env
+*token*
+*secret*
+
+# nvim runtime stuff (config only)
+nvim/lazy-lock.json.bak

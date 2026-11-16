@@ -1,0 +1,60 @@
+/* Lost Galaxy — Catppuccin Mocha base, mauve/pink accents */
+:root {
+  /* raw Mocha */
+  --rosewater: #f5e0dc;
+  --flamingo:  #f2cdcd;
+  --pink:      #f5c2e7;
+  --mauve:     #cba6f7;
+  --red:       #f38ba8;
+  --maroon:    #eba0ac;
+  --peach:     #fab387;
+  --yellow:    #f9e2af;
+  --green:     #a6e3a1;
+  --teal:      #94e2d5;
+  --sky:       #89dceb;
+  --sapphire:  #74c7ec;
+  --blue:      #89b4fa;
+  --lavender:  #b4befe;
+  --text:      #cdd6f4;
+  --subtext1:  #bac2de;
+  --subtext0:  #a6adc8;
+  --overlay2:  #9399b2;
+  --overlay1:  #7f849c;
+  --overlay0:  #6c7086;
+  --surface2:  #585b70;
+  --surface1:  #45475a;
+  --surface0:  #313244;
+  --base:      #1e1e2e;
+  --mantle:    #181825;
+  --crust:     #11111b;
+
+  /* roles */
+  --bg:           var(--crust);
+  --bg-alt:       var(--mantle);
+  --panel:        var(--base);
+  --surface:      var(--surface0);
+  --border:       var(--surface1);
+  --border-focus: var(--mauve);
+  --fg:           var(--text);
+  --fg-muted:     var(--subtext0);
+  --fg-dim:       var(--overlay0);
+  --accent:       var(--mauve);
+  --accent2:      var(--pink);
+  --highlight:    var(--rosewater);
+  --sparkle:      var(--sky);
+  --success:      var(--green);
+  --warning:      var(--yellow);
+  --error:        var(--red);
+  --info:         var(--sky);
+
+  /* tokens */
+  --font: "JetBrainsMono Nerd Font", monospace;
+  --font-size: 11pt;
+  --radius-inner: 6px;
+  --radius-outer: 0px;
+  --border-w: 1px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --motion-fast: 100ms;
+  --motion-base: 150ms;   /* smoother: 250-300ms */
+  --easing: ease-out;     /* smoother: ease-in-out */
+}
