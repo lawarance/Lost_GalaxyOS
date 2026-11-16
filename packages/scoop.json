@@ -70,6 +70,13 @@
             "Info": ""
         },
         {
+            "Name": "less",
+            "Version": "710",
+            "Source": "main",
+            "Updated": "2026-11-16T22:42:38.6139466+01:00",
+            "Info": ""
+        },
+        {
             "Name": "ripgrep",
             "Version": "15.2.0",
             "Source": "main",
