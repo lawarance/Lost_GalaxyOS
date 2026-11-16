@@ -1,0 +1,117 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+  // Logo
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/ascii.txt",
+    "color": {
+
+      "1": "#f5e0dc", // Rosewater
+      "2": "#f2cdcd", // Flamingo
+      "3": "#f5c2e7", // Pink
+      "4": "#fab387", // Peach
+      "5": "#f9e2af", // Yellow
+      "6": "#a6e3a1", // Green
+      "7": "#94e2d5", // Teal
+      "8": "#89dceb", // Sky
+      "9": "#74c7ec"  // Sapphire
+    },
+    "padding": {
+      "top": 1,
+      "right": 3
+    }
+  },
+
+  // Wyglad
+  "display": {
+    "separator": " -> ",
+    "key": {
+      "width": 12
+    },
+    "color": {
+      "keys": "#89dceb",
+      "title": "#f5c2e7",
+      "separator": "#585b70"
+    },
+    "percent": {
+      "type": 3 // pasek + liczba
+    },
+    "size": {
+      "binaryPrefix": "iec"
+    }
+  },
+
+  // Moduly (ikony wymagaja czcionki Nerd Font)
+  "modules": [
+    "break",
+    {
+      "type": "title",
+      "color": {
+        "user": "#f5c2e7",
+        "at": "#cdd6f4",
+        "host": "#89dceb"
+      }
+    },
+    {
+      "type": "custom",
+      "format": "─────────────────────────────",
+      "outputColor": "#585b70"
+    },
+
+    // System
+    { "type": "os",     "key": " OS" },
+    { "type": "host",   "key": " Host" },
+    { "type": "kernel", "key": " Kernel" },
+    { "type": "uptime", "key": " Uptime" },
+    { "type": "packages", "key": " Pakiety" },
+    {"type": "wifi", "key": " WiFi"},
+
+    {
+      "type": "custom",
+      "format": "─────────────────────────────",
+      "outputColor": "#585b70"
+    },
+
+    // Sprzet
+    { "type": "cpu",   "key": " CPU" },
+    { "type": "gpu",   "key": " GPU" },
+    { "type": "board", "key": " Plyta" },
+    {
+      "type": "memory",
+      "key": " RAM",
+      "format": "{1} / {2} ({3})"
+    },
+    {
+      "type": "disk",
+      "key": " Dysk",
+      "folders": "C:\\",
+      "format": "{1} / {2} ({3})"
+    },
+    { "type": "battery", "key": " Bateria" },
+    { "type": "display", "key": " Ekran" },
+
+    {
+      "type": "custom",
+      "format": "─────────────────────────────",
+      "outputColor": "#585b70"
+    },
+
+    // Srodowisko
+    { "type": "shell",    "key": " Shell" },
+    { "type": "terminal", "key": " Terminal" },
+    { "type": "terminalfont", "key": " Czcionka" },
+    { "type": "wm",       "key": " WM" },
+    { "type": "localip",  "key": " IP", "showPrefixLen": false },
+
+    "break",
+
+    // Pasek kolorow
+    {
+      "type": "colors",
+      "symbol": "rectangle",
+      "paddingLeft": 2
+    },
+    "break"
+  ]
+}

@@ -1,0 +1,384 @@
+watch_stylesheet: true
+watch_config: true
+debug: false
+update_check: true
+
+bars:
+  status-bar:
+    enabled: true
+    screens: ["*"]
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      align: "center"
+    animation:
+      enabled: true
+      duration: 1000
+    blur_effect:
+      enabled: true
+      round_corners: true
+      dark_mode: true
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 45
+    layouts:
+      center:
+        alignment: "center"
+        stretch: false
+    padding:
+      top: 3
+      left: 3
+      bottom: 3
+      right: 3
+    widgets:
+      left: ["home", "clock", "glazewm_workspaces", "active_window"]
+      center: ["media"]
+      # removed trailing comma after power_menu (was creating an empty list item)
+      right: ["hardware-grouper", "systray", "volume", "microphone", "wifi", "bluetooth", "notifications", "power_menu"]
+
+widgets:
+
+# --- Home / app launcher menu -------------------------------------------
+  home:
+    type: "yasb.home.HomeWidget"
+    options:
+      blur: true
+      round_corners: true
+      label: "<span>\ue22e</span>"
+      menu_list:
+        - { title: "<span>\ue617</span>&nbsp;&nbsp;&nbsp;Home", path: "~" }
+        - { title: "<span>\udb82\ude0a</span>&nbsp;&nbsp;&nbsp;PowerShell", command: "pwsh.exe", args: ["-NoExit", "-Command", "Set-Location -LiteralPath $env:USERPROFILE"], show_window: true }
+        - { title: "<span>\uebca</span>&nbsp;&nbsp;&nbsp;Git Bash", command: "C:\\Program Files\\Git\\git-bash.exe", args: ["--cd=%USERPROFILE%"], show_window: true }
+        - { title: "<span>\ueac4</span>&nbsp;&nbsp;&nbsp;VS Code", command: "cmd.exe", args: ["/c", "code"], shell: true }
+        - { title: "<span>\uf1bc</span>&nbsp;&nbsp;&nbsp;Spotify", command: "cmd.exe", args: ["/c", "start", "", "spotify:"], shell: true }
+        - { title: "<span>\uf1ff</span>&nbsp;&nbsp;&nbsp;Discord", command: "cmd.exe", args: ["/c", "start", "", "discord:"], shell: true }
+        - { separator: true }
+        - { title: "<span>\uf0ad</span>&nbsp;&nbsp;&nbsp;Control Panel", command: "control", args: [""], shell: true }
+        - { title: "<span>\uf437</span>&nbsp;&nbsp;&nbsp;Task Manager", command: "taskmgr", args: [""], shell: true }
+        - { title: "<span>\uf05a</span>&nbsp;&nbsp;&nbsp;About", command: "winver", args: [""], shell: true }
+      system_menu: false
+      power_menu: false
+      alignment: "left"
+      direction: "down"
+
+  # --- Clock + calendar popup ---------------------------------------------
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "<span>\uf017</span>{%a. %B %d, %H:%M %p}"
+      tooltip: false
+      timezones: []
+      calendar:
+        blur: true
+        round_corners: true
+        alignment: "left"
+        direction: "down"
+        show_week_numbers: true
+      callbacks:
+        on_left: "toggle_calendar"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      class_name: "systray"
+      label_collapsed: "▼"
+      label_expanded: "▶"
+      label_position: "right"
+      icon_size: 16
+      pin_click_modifier: "alt"
+      show_in_popup: true
+      icons_per_row: 4
+      popup:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: None
+        alignment: "center"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+
+  # --- Volume / audio menu -------------------------------------------------
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span>{level}"
+      tooltip: false
+      mute_text: "Muted"
+      icons:
+        - "\ueee8"  # muted
+        - "\uf026"  # 0%
+        - "\uf027"  # low
+        - "\uf027"  # mid
+        - "\uf028"  # high
+      audio_menu:
+        blur: true
+        round_corners: true
+        alignment: "left"
+        direction: "down"
+        show_apps: true
+        show_apps_expanded: true
+      callbacks:
+        on_left: "toggle_volume_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_mute"
+
+  # --- GlazeWM workspace pills ---------------------------------------------
+  glazewm_workspaces:
+    type: "glazewm.workspaces.GlazewmWorkspacesWidget"
+    options:
+      # Offline behavior (matching komorebi's label_offline and hide_if_offline)
+      offline_label: "GlazeWM Offline"
+      hide_if_offline: true
+
+      # Workspace display labels (matching komorebi's label_workspace_btn and label_workspace_active_btn)
+      populated_label: "\udb85\udcfc"
+      empty_label: "\udb85\udcfc"
+      active_populated_label: "\udb85\udcfb"
+      active_empty_label: "\udb85\udcfb"
+
+      # Workspace management (matching komorebi's hide_empty_workspaces)
+      hide_empty_workspaces: false
+
+      # Server connection
+      glazewm_server_uri: "ws://localhost:6123"
+
+      # Additional GlazeWM-specific options (keeping defaults)
+      enable_scroll_switching: true
+      reverse_scroll_direction: true
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+
+  # --- Active window title --------------------------------------------------
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[app_name]}"
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 16
+      max_length: 56
+      max_length_ellipsis: "..."
+      monitor_exclusive: true
+      callbacks:
+        on_left: "do_nothing"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+
+  # --- Now playing / media controls -----------------------------------------
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "\uf001  {title}  \uee83"
+      label_alt: "\uf001  {artist} {s} {title}  \uee83"
+      separator: "-"
+      hide_empty: true
+      controls_hide: true
+      show_thumbnail: true
+      thumbnail_alpha: 100
+      thumbnail_padding: 0
+      max_field_size:
+        label: 48
+        label_alt: 48
+      scrolling_label:
+        enabled: true
+        update_interval_ms: 60
+        style: "left"
+        separator: "      "
+        always_scroll: false
+      media_menu:
+        blur: true
+        round_corners: true
+        alignment: "center"
+        direction: "down"
+        thumbnail_corner_radius: 4
+        thumbnail_size: 180
+        max_title_size: 100
+        max_artist_size: 100
+        show_source: true
+      media_menu_icons:
+        play: "\uf04b"
+        pause: "\uf04c"
+        prev_track: "\uf048"
+        next_track: "\uf051"
+      progress_bar:
+        enabled: true
+        alignment: bottom
+      callbacks:
+        on_left: "toggle_media_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+
+  microphone:
+    type: "yasb.microphone.MicrophoneWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span> {level}"
+      mute_text: "mute"
+      icons:
+        normal: "\uf130"
+        muted: "\uf131"
+      mic_menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
+        alignment: "right"
+        direction: "down"
+      callbacks:
+        on_left: "toggle_mic_menu"
+        on_middle: "toggle_label"
+        on_right: "toggle_mute"
+
+  # --- CPU / RAM / GPU grouped pill ------------------------------------------
+  hardware-grouper:
+    type: "yasb.grouper.GrouperWidget"
+    options:
+      class_name: "hardware-grouper"
+      widgets: ["cpu", "memory", "gpu"]
+      collapse_options:
+        enabled: true
+        expanded_label: "\uf054"
+        collapsed_label: "\uf053"
+        label_position: "right"
+      keybindings:
+        # fixed: "action" now nested under the same list item as "keys"
+        - keys: "alt+p"
+          action: "toggle_collapse"
+
+  cpu:
+    type: "yasb.cpu.CpuWidget"
+    options:
+      label: "<span>\uf4bc</span>CPU: {info[percent][total]}%"
+      label_alt: "<span>\uf4bc</span> {info[percent][total]}%"
+      update_interval: 15000
+      hide_decimal: true
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+
+  memory:
+    type: "yasb.memory.MemoryWidget"
+    options:
+      label: "<span>\uefc5</span>RAM: {virtual_mem_percent}%"
+      label_alt: "<span>\uefc5</span> {virtual_mem_percent}%"
+      update_interval: 15000
+      hide_decimal: true
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+
+  gpu:
+    type: "yasb.gpu.GpuWidget"
+    options:
+      label: "<span>\uf2db</span>GPU: {info[utilization]}%"
+      label_alt: "<span>\uf2db</span> {info[utilization]}%"
+      update_interval: 15000
+      hide_decimal: true
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+  
+  
+
+  # --- Notifications ----------------------------------------------------------
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span>{icon}</span>"
+      hide_empty: false
+      tooltip: false
+      icons:
+        new: "\uf0f3"
+        default: "\uf0a2"
+      callbacks:
+        on_left: "toggle_notification"
+        on_right: "do_nothing"
+        on_middle: "do_nothing"
+
+  # --- Power menu -----------------------------------------------------------
+  power_menu:
+    type: "yasb.power_menu.PowerMenuWidget"
+    options:
+      label: "<span>\uf011</span>"
+      uptime: true
+      show_user: true
+      profile_image_size: 128
+      blur: true
+      blur_background: true
+      button_row: 6
+      menu_style: "fullscreen"
+      buttons:
+        signout: ["\uf08b", "Sign Out"]
+        shutdown: ["\uf011", "Shut Down"]
+        restart: ["\uead2", "Restart"]
+        hibernate: ["\uf28e", "Hibernate"]
+        sleep: ["\udb82\udd04", "Sleep"]
+        lock: ["\uf023", "Lock"]
+        cancel: ["\udb81\udf3a", "Cancel"]
+
+  # --- Wi-Fi ------------------------------------------------------------------
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span>" 
+      label_alt: "{wifi_name} {wifi_strength}% "
+      update_interval: 5000
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "exec cmd.exe /c start ms-settings:network"
+        on_right: "toggle_label"
+      ethernet_label: "<span>{wifi_icon}</span>"
+      ethernet_label_alt: "<span>{wifi_icon}</span>{ip_addr}"
+      ethernet_icon: "\ueba9"
+      get_exact_wifi_strength: false  # requires location permission if true
+      wifi_icons: [
+        "\udb82\udd2e",  # 0% strength
+        "\udb82\udd1f",  # 1-24%
+        "\udb82\udd22",  # 25-49%
+        "\udb82\udd25",  # 50-74%
+        "\udb82\udd28"   # 75-100%
+      ]
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        wifi_icons_secured: ["\ue670", "\ue671", "\ue672", "\ue673"]
+        wifi_icons_unsecured: ["\uec3c", "\uec3d", "\uec3e", "\uec3f"]
+
+  # --- Bluetooth ----------------------------------------------------------------
+  bluetooth:
+    type: "yasb.bluetooth.BluetoothWidget"
+    options:
+      label: "<span>{icon}</span> {device_count}"
+      label_alt: "{device_name}"
+      label_no_device: "No devices connected"
+      label_device_separator: ", "
+      max_length: 25
+      max_length_ellipsis: "..."
+      icons:
+        bluetooth_on: "\udb80\udcaf"
+        bluetooth_off: "\udb80\udcb2"
+        bluetooth_connected: "\udb80\udcb1"
+      device_aliases:
+        - name: "T5.0"
+          alias: "\uf025"
+      callbacks:
+        on_left: "toggle_label"
+        on_right: "exec cmd.exe /c start ms-settings:bluetooth"

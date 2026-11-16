@@ -1,0 +1,8 @@
+[user]
+	email = lawarancechettiar@gmail.com
+	nam = Lawarance
+	name = SamDHam
+[credential "https://projektor.ee.pw.edu.pl"]
+	provider = generic
+[init]
+	defaultBranch = main
