@@ -4,21 +4,14 @@
   // ✦ Lost Galaxy — fastfetch
   // location: ~/.config/fastfetch/config.jsonc  (+ ascii.txt next to it)
 
-  // ─── logo: braille galaxy · mauve -> blue -> green, yellow core ───
+  // ─── logo: braille galaxy · per-row gradient yellow -> green -> blue -> lavender -> purple -> mauve ───
   "logo": {
-    "type": "file",
-    "source": "~/.config/fastfetch/ascii.txt",
-    "color": {
-      "1": "#cba6f7",  // mauve · top
-      "2": "#b8aaf8",
-      "3": "#a5aef9",
-      "4": "#92b2fa",  // → blue
-      "5": "#8dbbed",
-      "6": "#95c8d4",
-      "7": "#9ed6ba",
-      "8": "#a6e3a1",  // green · bottom
-      "9": "#f9e2af"  // yellow · galaxy core (brighter: #ffd75f)
-    },
+    // raw file = one truecolor per row (14 steps), escapes baked into the file
+    // regenerate colors: ask claude / edit the 38;2;R;G;B codes
+    "type": "file-raw",
+    "source": "~/.config/fastfetch/ascii-raw.txt",
+    "width": 26,
+    "height": 14,
     "padding": { "top": 1, "left": 1, "right": 4 }
   },
 
