@@ -14,6 +14,7 @@ $Configs = @(
     @{ Name = "bashrc";      Live = "$HOME\.bashrc";                                  Repo = "$Repo\gitbash\.bashrc" }
     @{ Name = "bash_profile";Live = "$HOME\.bash_profile";                            Repo = "$Repo\gitbash\.bash_profile" }
     @{ Name = "fastfetch";   Live = "$HOME\.config\fastfetch\config.jsonc";           Repo = "$Repo\fastfetch\config.jsonc" }
+    @{ Name = "fastfetch-logo"; Live = "$HOME\.config\fastfetch\ascii.txt";     Repo = "$Repo\fastfetch\ascii.txt" }
     @{ Name = "nvim";        Live = "$env:LOCALAPPDATA\nvim";                         Repo = "$Repo\nvim"; Dir = $true }
     @{ Name = "vscode";      Live = "$env:APPDATA\Code\User\settings.json";           Repo = "$Repo\vscode\settings.json" }
     @{ Name = "vscode-keys"; Live = "$env:APPDATA\Code\User\keybindings.json";        Repo = "$Repo\vscode\keybindings.json" }
