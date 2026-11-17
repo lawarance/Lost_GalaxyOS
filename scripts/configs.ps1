@@ -7,6 +7,8 @@ $Configs = @(
     @{ Name = "yasb-styles"; Live = "$HOME\.config\yasb\styles.css";                  Repo = "$Repo\yasb\styles.css" }
     @{ Name = "alacritty";   Live = "$env:APPDATA\alacritty\alacritty.toml";         Repo = "$Repo\alacritty\alacritty.toml" }
     @{ Name = "starship";    Live = "$HOME\.config\starship.toml";                    Repo = "$Repo\starship\starship.toml" }
+    @{ Name = "bat";         Live = "$env:APPDATA\bat\config";                       Repo = "$Repo\bat\config" }
+    @{ Name = "bat-themes";  Live = "$env:APPDATA\bat\themes";                       Repo = "$Repo\bat\themes"; Dir = $true }
     @{ Name = "terminal";    Live = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"; Repo = "$Repo\terminal\settings.json" }
     @{ Name = "pwsh";        Live = $PROFILE.CurrentUserCurrentHost;                  Repo = "$Repo\powershell\Microsoft.PowerShell_profile.ps1" }
     @{ Name = "bashrc";      Live = "$HOME\.bashrc";                                  Repo = "$Repo\gitbash\.bashrc" }

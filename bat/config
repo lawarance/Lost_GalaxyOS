@@ -1,0 +1,8 @@
+# ✦ Lost Galaxy — bat
+# location: %APPDATA%\bat\config   (check: bat --config-file)
+
+--theme="Catppuccin Mocha"
+--style="numbers,changes,header,grid"
+--italic-text=always
+--map-syntax="*.jsonc:JSON"
+--map-syntax=".bashrc:Bourne Again Shell (bash)"

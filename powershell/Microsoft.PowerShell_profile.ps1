@@ -86,9 +86,42 @@ Set-PSReadLineOption -Colors @{
 Remove-Variable rgb
 
 
-# ─── 9. cli tools (task 5: eza, bat, fzf, btop) ──────────────────
+# ─── 9. cli tools: eza · bat · fzf · btop · lazygit ──────────────
 
-# coming next task
+# eza (ls with icons; colors come from the alacritty palette)
+Remove-Item Alias:ls -Force -ErrorAction SilentlyContinue
+function ls { eza --icons --group-directories-first @args }
+function ll { eza -la --icons --git --group-directories-first @args }
+function lt { eza --tree --level=2 --icons --git-ignore @args }
+
+# bat (cat with syntax colors)
+Remove-Item Alias:cat -Force -ErrorAction SilentlyContinue
+function cat { bat @args }
+
+# fzf (fuzzy finder) — lost galaxy colors
+$env:FZF_DEFAULT_COMMAND = 'fd --type f --hidden --exclude .git'
+$env:FZF_DEFAULT_OPTS = @(
+    '--height=45% --layout=reverse --border=rounded --margin=0,1'
+    '--prompt="󰙴 " --pointer="▶" --marker="✦" --separator="─" --scrollbar="│"'
+    '--color=bg:-1,bg+:#313244,fg:#cdd6f4,fg+:#cdd6f4'
+    '--color=hl:#f5c2e7,hl+:#f5c2e7,info:#cba6f7,prompt:#cba6f7'
+    '--color=pointer:#f5e0dc,marker:#b4befe,spinner:#f5e0dc,header:#89dceb'
+    '--color=border:#45475a,label:#cba6f7,selected-bg:#45475a'
+) -join ' '
+
+# fp = find file with preview · fe = find + open in code
+function fp { fzf --preview 'bat --color=always --style=numbers --line-range=:200 {}' @args }
+function fe { $f = fp; if ($f) { code $f } }
+
+# Ctrl+T = insert file path · Ctrl+R = fuzzy history  (needs PSFzf module)
+if (Get-Module -ListAvailable PSFzf) {
+    Import-Module PSFzf
+    Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+}
+
+# btop / lazygit
+Set-Alias top btop
+Set-Alias lg  lazygit
 
 
 # ─── 10. prompt: starship ────────────────────────────────────────
