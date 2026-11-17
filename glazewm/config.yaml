@@ -5,14 +5,14 @@ general:
   # Commands to run when the WM has started. This is useful for running a
   # script or launching another application.
   # Example: The below command launches YASB.
-  startup_commands: []
+  startup_commands: ["shell-exec yasbc start"]      # glazewm starts the bar
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills `YASB`.
-  shutdown_commands: []
+  shutdown_commands: ["shell-exec yasbc stop"]
 
   # Commands to run after the WM config is reloaded.
-  config_reload_commands: []
+  config_reload_commands: ["shell-exec yasbc reload"]
 
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
@@ -34,7 +34,7 @@ general:
   # - 'cloak': Recommended. Hides windows with no animation.
   # - 'hide': Legacy method (v3.5 and earlier) that has a brief animation,
   # but has stability issues with some apps.
-  hide_method: "cloak"
+  hide_method: "cloak"    # instant + most stable ("hide" = old animated method, buggy)
 
   # Affects which windows get shown in the native Windows taskbar. Has no
   # effect if `hide_method: 'hide'`.
@@ -68,7 +68,7 @@ window_effects:
     # Remove the title bar from the window's frame. Note that this can
     # cause rendering issues for some applications.
     hide_title_bar:
-      enabled: true       # if an app breaks, add it to window_rules below
+      enabled: false      # true breaks chromium apps (opera goes fullscreen on workspace switch)
 
     # Change the corner style of the window's frame.
     # ** Exclusive to Windows 11 due to API limitations.
@@ -79,10 +79,10 @@ window_effects:
 
     # Change the transparency of the window.
     transparency:
-      enabled: false
+      enabled: true
       # Can be something like '95%' or '0.95' for slightly transparent windows.
       # '0' or '0%' is fully transparent (and, by consequence, unfocusable).
-      opacity: "95%"
+      opacity: "100%"
 
   # Visual effects to apply to non-focused windows.
   other_windows:
@@ -90,13 +90,13 @@ window_effects:
       enabled: true
       color: "#45475a"    # surface1, muted
     hide_title_bar:
-      enabled: true
+      enabled: false
     corner_style:
       enabled: true
       style: "small_rounded"
     transparency:
       enabled: true
-      opacity: "95%"
+      opacity: "80%"      # unfocused windows fade (SamDHamOS uses 65%)
 
 window_behavior:
   # New windows are created in this state whenever possible.
@@ -155,6 +155,8 @@ window_rules:
       # Ignore rules for various 3rd-party apps.
       - window_process: { equals: "PowerToys" }
         window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
+      - window_title: { equals: "Command Palette" }
+        window_class: { equals: "WinUIDesktopWin32WindowClass" }
       - window_process: { equals: "PowerToys" }
         window_title: { regex: ".*? - Peek" }
       - window_process: { equals: "Lively" }

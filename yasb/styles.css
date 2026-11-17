@@ -1,294 +1,258 @@
 /* ✦ Lost Galaxy — YASB styles
    location: ~\.config\yasb\styles.css · saves reload live
-   palette: catppuccin mocha · mauve × pink
-   shape: sharp full-width bar, rounded (6px) pills inside */
+   bar: small + sharp, full width · dropdowns: cozy, roomy, rounded (12px) */
 
 :root {
-    --rosewater: #f5e0dc;
-    --flamingo:  #f2cdcd;
-    --pink:      #f5c2e7;
-    --mauve:     #cba6f7;
-    --red:       #f38ba8;
-    --maroon:    #eba0ac;
-    --peach:     #fab387;
-    --yellow:    #f9e2af;
-    --green:     #a6e3a1;
-    --teal:      #94e2d5;
-    --sky:       #89dceb;
-    --sapphire:  #74c7ec;
-    --blue:      #89b4fa;
-    --lavender:  #b4befe;
-    --text:      #cdd6f4;
-    --subtext1:  #bac2de;
-    --subtext0:  #a6adc8;
-    --overlay2:  #9399b2;
-    --overlay1:  #7f849c;
-    --overlay0:  #6c7086;
-    --surface2:  #585b70;
-    --surface1:  #45475a;
-    --surface0:  #313244;
-    --base:      #1e1e2e;
-    --mantle:    #181825;
-    --crust:     #11111b;
+    --rosewater: #f5e0dc;  --flamingo: #f2cdcd;  --pink: #f5c2e7;   --mauve: #cba6f7;
+    --red: #f38ba8;        --maroon: #eba0ac;    --peach: #fab387;  --yellow: #f9e2af;
+    --green: #a6e3a1;      --teal: #94e2d5;      --sky: #89dceb;    --sapphire: #74c7ec;
+    --blue: #89b4fa;       --lavender: #b4befe;
+    --text: #cdd6f4;       --subtext1: #bac2de;  --subtext0: #a6adc8;
+    --overlay2: #9399b2;   --overlay1: #7f849c;  --overlay0: #6c7086;
+    --surface2: #585b70;   --surface1: #45475a;  --surface0: #313244;
+    --base: #1e1e2e;       --mantle: #181825;    --crust: #11111b;
 }
 
 * {
     font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NFP", "JetBrainsMono NF";
-    font-size: 11pt;
+    font-size: 10pt;
     font-weight: 600;
     color: var(--text);
 }
 
-/* ─── bar ──────────────────────────────────────────────────── */
+/* ═══ BAR (small) ═══════════════════════════════════════════════ */
 
 .yasb-bar {
-    background-color: rgba(17, 17, 27, 0.80);   /* crust · lower alpha = more blur showing */
+    background-color: rgba(17, 17, 27, 0.82);
     border: none;
     border-bottom: 1px solid var(--surface0);
     border-radius: 0;
 }
-
 .widget {
-    padding: 0 8px;
-    margin: 0 2px;
-    border-radius: 6px;
+    padding: 0 6px;
+    margin: 0 1px;
+    border-radius: 5px;
 }
-.widget .label { padding: 0 2px; }
-.widget .icon  { font-size: 12pt; padding-right: 4px; }
+.widget:hover { background-color: rgba(49, 50, 68, 0.6); }
+.widget .label { padding: 0 1px; }
+.widget .icon  { font-size: 11pt; padding-right: 4px; }
 
-/* ─── tooltip + context menu ───────────────────────────────── */
+/* ─── left ─── */
+.power-menu-widget { background-color: var(--mauve); padding: 0 8px; margin-left: 0; }
+.power-menu-widget .label, .power-menu-widget .icon { color: var(--crust); font-size: 11pt; padding: 0; }
+.power-menu-widget:hover { background-color: var(--red); }
 
-.tooltip {
-    background-color: var(--base);
-    border: 1px solid var(--surface1);
-    border-radius: 6px;
-    color: var(--text);
-    padding: 4px 10px;
-    font-size: 10pt;
-    margin-top: 4px;
-}
-.context-menu,
-.context-menu .menu-checkbox {
-    background-color: var(--base);
-    border: 1px solid var(--surface1);
-    padding: 4px 0;
-    font-size: 10pt;
-    color: var(--text);
-}
-.context-menu::item,
-.context-menu .menu-checkbox {
-    background-color: transparent;
-    padding: 6px 12px;
-    margin: 2px 6px;
-    border-radius: 6px;
-    min-width: 100px;
-}
-.context-menu::item:selected,
-.context-menu .menu-checkbox:hover {
-    background-color: var(--surface0);
-    color: var(--mauve);
-}
-.context-menu::separator { height: 1px; background-color: var(--surface1); margin: 4px 8px; }
-.context-menu::item:disabled { color: var(--overlay0); background-color: transparent; }
-.context-menu .menu-checkbox .checkbox { border: none; padding: 8px 16px; font-size: 10pt; margin: 0; color: var(--text); }
-.context-menu .menu-checkbox .checkbox:unchecked { color: var(--overlay1); }
-.context-menu .menu-checkbox .checkbox::indicator { width: 12px; height: 12px; margin-right: 8px; }
-.context-menu .menu-checkbox .checkbox::indicator:unchecked { background: var(--surface1); border-radius: 3px; }
-.context-menu .menu-checkbox .checkbox::indicator:checked { background: var(--mauve); border-radius: 3px; }
-
-/* ─── left: home · workspaces · active window ─────────────── */
-
-.home-widget {
-    background-color: var(--mauve);
-    padding: 0 8px;
-    margin-left: 0;
-}
-.home-widget .icon,
-.home-widget .label { color: var(--crust); font-size: 13pt; padding: 0; }
-.home-widget:hover { background-color: var(--pink); }
-
-.home-menu {
-    background-color: var(--base);
-    border: 1px solid var(--surface1);
-    border-radius: 8px;
-}
-.home-menu .menu-item {
-    padding: 7px 40px 7px 14px;
-    font-size: 10pt;
-    color: var(--text);
-}
-.home-menu .menu-item:hover { background-color: var(--surface0); color: var(--mauve); }
-.home-menu .separator { max-height: 1px; background-color: var(--surface1); }
-
-.glazewm-workspaces {
-    background-color: var(--surface0);
-    padding: 0 4px;
-}
-.glazewm-workspaces .offline-status { color: var(--overlay0); font-size: 10pt; padding: 0 4px; }
+.glazewm-workspaces { padding: 0 2px; }
+.glazewm-workspaces .offline-status { color: var(--overlay0); padding: 0 4px; }
 .glazewm-workspaces .ws-btn {
     background-color: transparent;
     border: none;
     border-radius: 4px;
-    color: var(--surface2);          /* empty */
-    font-size: 12pt;
-    padding: 0 6px;
-    margin: 3px 1px;
+    color: var(--surface2);
+    font-size: 11pt;
+    padding: 0 5px;
+    margin: 2px 1px;
 }
-.glazewm-workspaces .ws-btn.populated       { color: var(--lavender); }
+.glazewm-workspaces .ws-btn.populated { color: var(--lavender); }
 .glazewm-workspaces .ws-btn.active_empty,
-.glazewm-workspaces .ws-btn.active_populated {
-    background-color: var(--mauve);
-    color: var(--crust);
-}
+.glazewm-workspaces .ws-btn.active_populated { background-color: var(--mauve); color: var(--crust); }
 .glazewm-workspaces .ws-btn:hover { color: var(--pink); }
 
-.active-window-widget .label { color: var(--subtext0); font-weight: 500; }
-.active-window-widget .label-icon { padding-right: 6px; }
 
-/* ─── center: clock + calendar ─────────────────────────────── */
-
-.clock-widget {
-    background-color: var(--surface0);
-    padding: 0 10px;
+/* ─── groupers: one pill for several widgets ─── */
+.hardware-grouper {
+    border-radius: 6px;
+    padding: 0 2px;
+    margin: 0 3px;
 }
-.clock-widget .icon  { color: var(--sky); }
-.clock-widget .label { color: var(--text); }
+.hardware-grouper .widget { margin: 0; padding: 0 5px; }
+.hardware-grouper .widget:hover { background-color: var(--surface0); }
+/* hardware toggle: mauve button, expanded area = bar color */
+.hardware-grouper {
+    background-color: transparent;
+    border: none;
+}
+.hardware-grouper .label.collapse-label, .hardware-grouper .collapse-label,
+.hardware-grouper .collapse-button, .hardware-grouper QPushButton {
+    color: var(--crust);
+    background-color: var(--mauve);
+    border: none;
+    border-radius: 5px;
+    padding: 0 8px;
+    margin: 2px 2px;
+    min-width: 22px;
+}
+.hardware-grouper .collapse-button:hover, .hardware-grouper QPushButton:hover { background-color: var(--pink); }
+.cpu-widget .icon,    .cpu-widget .label    { color: var(--peach); }
+.memory-widget .icon, .memory-widget .label { color: var(--green); }
+.disk-widget .icon,   .disk-widget .label   { color: var(--red); }
 
-.calendar {
-    background-color: var(--base);
+/* ─── center ─── */
+.clock-widget .icon        { color: var(--sky); }
+.pomodoro-widget .icon     { color: var(--peach); }
+.pomodoro-widget .label    { color: var(--peach); }
+.open-meteo-widget .icon,
+.weather-widget .icon      { color: var(--yellow); }
+
+/* ─── right ─── */
+.media-widget .icon, .media-widget .label { color: var(--pink); }
+.notes-widget .icon        { color: var(--rosewater); }
+.brightness-widget .icon   { color: var(--yellow); }
+.volume-widget .icon       { color: var(--mauve); }
+.wifi-widget .icon         { color: var(--sky); }
+.bluetooth-widget .icon    { color: var(--blue); }
+.battery-widget .icon      { color: var(--green); }
+.notification-widget .icon { color: var(--overlay2); }
+.notification-widget .icon.new-notification { color: var(--yellow); }
+
+
+.systray { padding: 0 2px; }
+.systray .unpinned-visibility-btn {
+    border: none; border-radius: 5px; padding: 0 8px; margin: 2px 2px;
+    color: var(--crust); background-color: var(--mauve); font-size: 11pt;
+}
+.systray .unpinned-visibility-btn:hover { background-color: var(--pink); }
+.systray-popup { min-width: 56px; }
+.systray-popup .button { padding: 8px; margin: 3px; border-radius: 8px; }
+.systray-popup .button:hover { background-color: var(--surface0); }
+
+/* ═══ DROPDOWNS (cozy) ══════════════════════════════════════════
+   shared look only: colors, border, corners. no forced padding/font sizes
+   on the containers — YASB sizes popups itself, overriding that cuts content */
+
+.calendar, .media-menu, .audio-menu, .wifi-menu, .microphone-menu,
+.bluetooth-menu, .brightness-menu, .pomodoro-menu, .notes-menu,
+.cpu-menu, .memory-menu, .weather-card, .systray-popup {
+    background-color: rgba(30, 30, 46, 0.94);
     border: 1px solid var(--surface1);
-    border-radius: 8px;
+    border-radius: 12px;
 }
+
+/* ─── calendar ─── */
 .calendar .calendar-table,
 .calendar .calendar-table::item {
     background-color: transparent;
     color: var(--subtext0);
     margin: 0; padding: 0; border: none; outline: none;
 }
-.calendar .calendar-table::item:selected {
-    color: var(--crust);
-    background-color: var(--mauve);
-    border-radius: 10px;
-}
+.calendar .calendar-table::item:selected { color: var(--crust); background-color: var(--mauve); border-radius: 10px; }
+/* day names: small + no padding so Sun / Mon / Tue fit their columns */
+.calendar QHeaderView::section { font-size: 8pt; color: var(--mauve); background: transparent; border: none; padding: 0; }
 .calendar .day-label { margin-top: 20px; }
-.calendar .day-label,
-.calendar .month-label,
-.calendar .date-label,
-.calendar .week-label,
-.calendar .holiday-label {
-    font-size: 13pt;
-    color: var(--text);
-    font-weight: 700;
-    min-width: 180px;
-    max-width: 180px;
+.calendar .day-label, .calendar .month-label, .calendar .date-label,
+.calendar .week-label, .calendar .holiday-label {
+    font-size: 12pt; color: var(--text); font-weight: 700; min-width: 180px; max-width: 180px;
 }
-.calendar .month-label { font-weight: normal; color: var(--subtext0); }
-.calendar .week-label,
-.calendar .holiday-label { font-size: 10pt; color: var(--overlay1); }
-.calendar .date-label { font-size: 60pt; font-weight: 900; color: var(--mauve); margin-top: -16px; }
+.calendar .month-label { font-weight: 500; color: var(--subtext0); }
+.calendar .week-label, .calendar .holiday-label { font-size: 9pt; color: var(--overlay1); }
+.calendar .date-label { font-size: 56pt; font-weight: 900; color: var(--mauve); margin-top: -16px; }
 
-/* ─── right: media ─────────────────────────────────────────── */
-
-.media-widget { padding: 0 8px; background-color: var(--surface0); }
-.media-widget .label { color: var(--pink); }
-.media-widget .btn { color: var(--overlay1); padding: 0 4px; margin: 0; font-weight: 400; font-size: 13pt; }
-.media-widget .btn:hover { color: var(--mauve); }
-.media-widget .btn.disabled,
-.media-widget .btn.disabled:hover { color: var(--surface2); background-color: transparent; }
-
-.media-menu {
-    min-width: 400px; max-width: 400px;
-    background-color: var(--base);
-    border: 1px solid var(--surface1);
-    border-radius: 8px;
-}
-.media-menu .title  { font-size: 12pt; font-weight: 700; color: var(--text); margin-left: 10px; }
-.media-menu .artist { font-size: 10pt; color: var(--overlay1); margin: 0 0 8px 10px; }
-.media-menu .source {
-    font-size: 9pt; font-weight: normal; margin-left: 10px;
-    color: var(--crust); background-color: var(--lavender);
-    border-radius: 3px; padding: 2px 4px;
-}
-.media-menu .source.spotify { background-color: var(--green); color: var(--crust); }
+/* ─── media ─── */
+.media-menu { min-width: 340px; max-width: 340px; }
+.media-menu .title  { font-size: 12pt; font-weight: 700; color: var(--text); margin-left: 12px; }
+.media-menu .artist { font-size: 11pt; color: var(--overlay1); margin: 2px 0 10px 12px; }
+.media-menu .source { font-size: 9pt; margin-left: 12px; color: var(--crust); background-color: var(--lavender); border-radius: 4px; padding: 2px 6px; }
+.media-menu .source.spotify { background-color: var(--green); }
 .media-menu .btn {
-    font-family: "Segoe Fluent Icons";
-    font-size: 12pt; font-weight: 400;
-    margin: 10px 2px 0 2px;
-    min-width: 36px; max-width: 36px; min-height: 36px; max-height: 36px;
-    border-radius: 18px;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NFP"; font-size: 12pt; font-weight: 400; color: var(--text);
+    margin: 12px 3px 0 3px;
+    min-width: 36px; max-width: 36px; min-height: 36px; max-height: 36px; border-radius: 18px;
+}
+.media-menu .btn.prev { margin-left: 12px; }
+.media-menu .btn:hover { color: var(--crust); background-color: var(--mauve); }
+.media-menu .btn.play { background-color: var(--mauve); color: var(--crust); font-size: 13pt; }
+.media-menu .btn.disabled, .media-menu .btn.disabled:hover { color: var(--surface2); background-color: transparent; }
+.media-menu .playback-time { font-size: 10pt; color: var(--overlay1); margin-top: 20px; min-width: 100px; }
+.media-menu .progress-slider { height: 12px; margin: 6px 6px; border-radius: 3px; }
+.media-menu .progress-slider::groove { height: 3px; border-radius: 3px; background: var(--surface1); }
+.media-menu .progress-slider::sub-page { background: var(--mauve); border-radius: 3px; height: 3px; }
+
+/* ─── volume / brightness / wifi / bt sliders + rows ─── */
+.audio-menu, .bluetooth-menu { min-width: 340px; }
+.wifi-menu { min-width: 400px; min-height: 420px; }
+.wifi-menu * { font-size: 11pt; }
+.wifi-menu .wifi-item { min-height: 36px; }
+.brightness-menu { min-width: 300px; }
+.brightness-menu QSlider { min-height: 26px; min-width: 250px; }
+.audio-menu .device, .wifi-menu .wifi-item { padding: 10px 14px; margin: 3px 0; border-radius: 8px; }
+.audio-menu .device:hover, .wifi-menu .wifi-item:hover { background-color: var(--surface0); }
+.audio-menu .device.active, .wifi-menu .wifi-item.active { color: var(--mauve); background-color: var(--surface0); }
+QSlider::groove:horizontal { height: 8px; border-radius: 3px; background: var(--surface1); }
+QSlider::sub-page:horizontal { height: 8px; border-radius: 3px; background: var(--mauve); }
+QSlider::handle:horizontal {
+    width: 20px; height: 20px; margin: -7px 0; border-radius: 10px;
+    background: var(--rosewater); border: 2px solid var(--mauve);
+}
+
+/* ─── pomodoro / notes ─── */
+.pomodoro-menu { min-width: 260px; }
+.pomodoro-menu .button { background-color: var(--surface0); border-radius: 8px; padding: 8px 16px; margin: 4px; }
+.pomodoro-menu .button:hover { background-color: var(--mauve); color: var(--crust); }
+
+.notes-menu { min-width: 340px; }
+.notes-menu QLineEdit, .notes-menu QTextEdit {
+    background-color: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-radius: 8px;
+    padding: 8px 10px;
     color: var(--text);
 }
-.media-menu .btn.prev { margin-left: 10px; }
-.media-menu .btn:hover { color: var(--crust); background-color: var(--mauve); }
-.media-menu .btn.play { background-color: var(--surface0); font-size: 16pt; }
-.media-menu .btn.disabled,
-.media-menu .btn.disabled:hover { color: var(--surface2); background-color: transparent; }
-.media-menu .playback-time { font-size: 10pt; color: var(--overlay1); margin-top: 20px; min-width: 100px; }
-.media-menu .progress-slider { height: 10px; margin: 5px 4px; border-radius: 3px; }
-.media-menu .progress-slider::groove { height: 2px; border-radius: 3px; background: var(--surface1); }
-.media-menu .progress-slider::groove:hover { height: 6px; background: var(--surface2); }
-.media-menu .progress-slider::sub-page { background: var(--mauve); border-radius: 3px; height: 4px; }
-
-/* ─── right: hardware group (cpu · ram · gpu) ──────────────── */
-
-.hardware-grouper { background-color: var(--surface0); padding: 0 4px; }
-.cpu-widget, .memory-widget, .gpu-widget { padding: 0 5px; margin: 0; }
-.cpu-widget .icon    { color: var(--peach); }
-.memory-widget .icon { color: var(--green); }
-.gpu-widget .icon    { color: var(--sky); }
-
-/* ─── right: systray ──────────────────────────────────────── */
-
-.systray { background-color: transparent; padding: 0 4px; }
-.systray .unpinned-visibility-btn { border: none; color: var(--overlay1); }
-.systray .unpinned-visibility-btn:hover { color: var(--mauve); }
-.systray-popup {
-    background-color: var(--base);
-    border: 1px solid var(--surface1);
-    border-radius: 8px;
+.notes-menu QLineEdit:focus, .notes-menu QTextEdit:focus { border: 1px solid var(--mauve); }
+.notes-menu .note-item { padding: 8px 10px; margin: 3px 0; border-radius: 8px; background-color: rgba(49, 50, 68, 0.5); }
+.notes-menu .note-item:hover:hover { background-color: var(--surface0); }
+.notes-menu QPushButton {
+    background-color: var(--surface0); border: none; border-radius: 8px; padding: 8px 14px; color: var(--text);
 }
+.notes-menu QPushButton:hover { background-color: var(--mauve); color: var(--crust); }
 
-/* ─── right: quick status (volume · mic · wifi · bt · notif) ── */
+/* ─── cpu / ram graphs ─── */
+.cpu-menu, .memory-menu { min-width: 320px; }
 
-.volume-widget, .microphone-widget, .wifi-widget,
-.bluetooth-widget, .notification-widget { padding: 0 5px; margin: 0; }
+/* ─── weather card ─── */
+.weather-card { min-width: 540px; }
+.weather-card-today .label.location { font-size: 20pt; font-weight: 700; color: var(--mauve); }
+.weather-card-day { border: 1px solid transparent; border-radius: 10px; background-color: rgba(17, 17, 27, 0.4); padding: 6px; }
+.weather-card-day.active { border: 1px solid var(--mauve); }
+.weather-card .hourly-container { background-color: transparent; min-height: 150px; border: none; }
 
-.volume-widget .icon     { color: var(--mauve); }
-.microphone-widget .icon { color: var(--pink); }
-.wifi-widget .icon       { color: var(--sky); }
-.bluetooth-widget .icon  { color: var(--blue); }
-.notification-widget .icon { color: var(--overlay2); }
-.notification-widget .icon.new-notification { color: var(--yellow); }
-
-.audio-menu, .microphone-menu, .wifi-menu, .bluetooth-menu {
-    background-color: var(--base);
-    border: 1px solid var(--surface1);
-    border-radius: 8px;
+/* ─── tooltip + right-click menus ─── */
+.tooltip {
+    background-color: var(--base); border: 1px solid var(--surface1); border-radius: 8px;
+    color: var(--text); padding: 6px 12px; font-size: 10pt; margin-top: 4px;
 }
+.context-menu, .context-menu .menu-checkbox {
+    background-color: var(--base); border: 1px solid var(--surface1); padding: 6px 0; font-size: 10pt;
+}
+.context-menu::item, .context-menu .menu-checkbox { background-color: transparent; padding: 8px 14px; margin: 2px 6px; border-radius: 8px; min-width: 120px; }
+.context-menu::item:selected, .context-menu .menu-checkbox:hover { background-color: var(--surface0); color: var(--mauve); }
+.context-menu::separator { height: 1px; background-color: var(--surface1); margin: 4px 10px; }
+.context-menu::item:disabled { color: var(--overlay0); }
 
-/* ─── right: power ────────────────────────────────────────── */
-
-.power-menu-widget { padding: 0 8px 0 6px; }
-.power-menu-widget .label { color: var(--red); font-size: 12pt; }
-.power-menu-widget:hover .label { color: var(--maroon); }
-
+/* ─── power menu (fullscreen) ─── */
 .power-menu-popup { background-color: transparent; }
+.power-menu-overlay { background-color: rgba(17, 17, 27, 0.75); }
+.power-menu-popup .profile-username { font-size: 18pt; font-weight: 700; color: var(--text); margin: 10px 0 18px 0; }
+/* hide "Administrator" + email (Qt CSS has no display:none, so shrink to nothing) */
+.power-menu-popup .profile-account-type,
+.power-menu-popup .profile-email {
+    font-size: 1px; color: transparent; max-height: 0; margin: 0; padding: 0;
+}
 .power-menu-popup .button {
-    padding: 0;
-    width: 160px; height: 200px;
-    border-radius: 8px;
-    background-color: rgba(30, 30, 46, 0.85);
-    border: 2px solid var(--surface0);
-    margin: 0;
+    padding: 0; width: 130px; height: 130px; border-radius: 14px; margin: 6px;
+    background-color: rgba(30, 30, 46, 0.88); border: 2px solid var(--surface0);
 }
 .power-menu-popup .button.hover { background-color: var(--surface0); border: 2px solid var(--mauve); }
-.power-menu-popup .button .label { margin-bottom: 8px; font-size: 12pt; font-weight: 500; color: var(--subtext0); }
-.power-menu-popup .button .icon  { font-size: 48pt; padding-top: 28px; color: var(--overlay1); }
-.power-menu-popup .button.hover .label,
-.power-menu-popup .button.hover .icon { color: var(--mauve); }
-.power-menu-popup .button.cancel { height: 32px; border-radius: 6px; }
-.power-menu-popup .button.cancel .icon { padding: 0; margin: 0; }
-.power-menu-popup .button.cancel .label { color: var(--red); margin: 0; }
+.power-menu-popup .button .label { margin-bottom: 12px; font-size: 11pt; font-weight: 500; color: var(--subtext0); }
+.power-menu-popup .button .icon  { font-size: 34pt; padding-top: 18px; color: var(--overlay1); }
+.power-menu-popup .button.hover .label, .power-menu-popup .button.hover .icon { color: var(--mauve); }
+.power-menu-popup .button.shutdown.hover { border: 2px solid var(--red); }
+.power-menu-popup .button.shutdown.hover .icon, .power-menu-popup .button.shutdown.hover .label { color: var(--red); }
+.power-menu-popup .button.cancel {
+    min-height: 56px; max-height: 56px; min-width: 300px; height: 56px; width: 300px;
+    border-radius: 12px; padding: 0;
+}
+.power-menu-popup .button.cancel .icon { font-size: 1px; max-height: 0; min-height: 0; padding: 0; margin: 0; }
+.power-menu-popup .button.cancel .label { color: var(--red); margin: 0; padding: 0; font-size: 13pt; font-weight: 700; }
+.power-menu-popup .button.cancel.hover { background-color: var(--red); border: 2px solid var(--red); }
 .power-menu-popup .button.cancel.hover .label { color: var(--crust); }
-.power-menu-popup .button.cancel.hover { background-color: var(--red); }
-.uptime { font-size: 11pt; margin-bottom: 10px; color: var(--overlay1); }
+.uptime { font-size: 10pt; margin-bottom: 14px; color: var(--overlay1); }
