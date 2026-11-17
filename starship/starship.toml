@@ -1,9 +1,6 @@
-# ✦ Lost Galaxy — Starship prompt (pwsh + git bash) · connected pill
+# ✦ Lost Galaxy — Starship prompt (pwsh + git bash) · arrow bar
 # location: ~\.config\starship.toml
-#
-# one bar:  ( ✦ | ~/dotfiles | main ! | 3.12 | 09:54 )
-# caps:   start   end/transition   thin divider
-# pixel style -> replace  with  and  with  (and  with )
+# arrows are drawn by alacritty itself = pixel-perfect
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
@@ -11,7 +8,7 @@ add_newline = true
 palette = "lost_galaxy"
 
 format = """
-[](fg:mauve)[ ✦ ](bg:mauve fg:crust bold)[](fg:mauve bg:surface0)\
+[](fg:mauve)[ ✦ ](bg:mauve fg:crust bold)[](fg:mauve bg:surface0)\
 $directory\
 $git_branch\
 $git_status\
@@ -22,7 +19,7 @@ $nodejs\
 $rust\
 $cmd_duration\
 $time\
-[](fg:surface0)\
+[](fg:surface0)\
 $line_break\
 $character"""
 
@@ -69,36 +66,36 @@ format = "[ $path$read_only ](bg:surface0 fg:pink bold)"
 
 [git_branch]
 symbol = " "
-format = "[](bg:surface0 fg:overlay0)[ $symbol$branch ](bg:surface0 fg:lavender)"
+format = "[](bg:surface0 fg:overlay0)[ $symbol$branch ](bg:surface0 fg:lavender)"
 
 [git_status]
 format = '([$all_status$ahead_behind ](bg:surface0 fg:peach))'
 
 [python]
 symbol = " "
-format = '[](bg:surface0 fg:overlay0)[ $symbol($version)(\($virtualenv\)) ](bg:surface0 fg:yellow)'
+format = '[](bg:surface0 fg:overlay0)[ $symbol($version)(\($virtualenv\)) ](bg:surface0 fg:yellow)'
 
 [java]
 symbol = " "
-format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:peach)"
+format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:peach)"
 
 [c]
 symbol = " "
-format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:blue)"
+format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:blue)"
 
 [nodejs]
 symbol = "󰎙 "
-format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:green)"
+format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:green)"
 
 [rust]
 symbol = "󱘗 "
-format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:maroon)"
+format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:maroon)"
 
 [cmd_duration]
 min_time = 2000
-format = "[](bg:surface0 fg:overlay0)[ 󱦟 $duration ](bg:surface0 fg:overlay2)"
+format = "[](bg:surface0 fg:overlay0)[ 󱦟 $duration ](bg:surface0 fg:overlay2)"
 
 [time]
 disabled = false
 time_format = "%H:%M"
-format = "[](bg:surface0 fg:overlay0)[ 󰥔 $time ](bg:surface0 fg:sky)"
+format = "[](bg:surface0 fg:overlay0)[ 󰥔 $time ](bg:surface0 fg:sky)"
