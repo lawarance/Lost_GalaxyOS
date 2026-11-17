@@ -8,7 +8,7 @@ add_newline = true
 palette = "lost_galaxy"
 
 format = """
-[](fg:mauve)[ ✦ ](bg:mauve fg:crust bold)[](fg:mauve bg:surface0)\
+[](fg:mauve)[ 󰙴 ](bg:mauve fg:crust bold)[](fg:mauve bg:surface0)\
 $directory\
 $git_branch\
 $git_status\
@@ -59,7 +59,6 @@ vimcmd_symbol  = "[❮](bold sky)"
 [directory]
 truncation_length = 3
 truncate_to_repo = true
-truncation_symbol = "…/"
 home_symbol = "~"
 read_only = " 󰌾"
 format = "[ $path$read_only ](bg:surface0 fg:pink bold)"
