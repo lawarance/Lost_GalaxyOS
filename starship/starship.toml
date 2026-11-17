@@ -1,13 +1,17 @@
-# ✦ Lost Galaxy — Starship prompt (pwsh + git bash)
+# ✦ Lost Galaxy — Starship prompt (pwsh + git bash) · connected pill
 # location: ~\.config\starship.toml
+#
+# one bar:  ( ✦ | ~/dotfiles | main ! | 3.12 | 09:54 )
+# caps:   start   end/transition   thin divider
+# pixel style -> replace  with  and  with  (and  with )
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = true          # false = no blank line between commands
+add_newline = true
 palette = "lost_galaxy"
 
 format = """
-[</>](bold mauve) \
+[](fg:mauve)[ ✦ ](bg:mauve fg:crust bold)[](fg:mauve bg:surface0)\
 $directory\
 $git_branch\
 $git_status\
@@ -17,6 +21,8 @@ $c\
 $nodejs\
 $rust\
 $cmd_duration\
+$time\
+[](fg:surface0)\
 $line_break\
 $character"""
 
@@ -49,55 +55,50 @@ mantle    = "#181825"
 crust     = "#11111b"
 
 [character]
-success_symbol = "[✦](bold mauve)"
-error_symbol   = "[✦](bold red)"
-vimcmd_symbol  = "[✧](bold sky)"
+success_symbol = "[❯](bold mauve)"
+error_symbol   = "[❯](bold red)"
+vimcmd_symbol  = "[❮](bold sky)"
 
 [directory]
-style = "bold pink"
-read_only = " 󰌾"
-read_only_style = "red"
 truncation_length = 3
 truncate_to_repo = true
 truncation_symbol = "…/"
 home_symbol = "~"
-format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 󰌾"
+format = "[ $path$read_only ](bg:surface0 fg:pink bold)"
 
 [git_branch]
-symbol = " "
-style = "lavender"
-format = "[on](overlay0) [$symbol$branch]($style) "
+symbol = " "
+format = "[](bg:surface0 fg:overlay0)[ $symbol$branch ](bg:surface0 fg:lavender)"
 
 [git_status]
-style = "peach"
-format = '([\[$all_status$ahead_behind\]]($style) )'
+format = '([$all_status$ahead_behind ](bg:surface0 fg:peach))'
 
 [python]
-symbol = " "
-style = "yellow"
-format = '[$symbol($version )(\($virtualenv\) )]($style)'
+symbol = " "
+format = '[](bg:surface0 fg:overlay0)[ $symbol($version)(\($virtualenv\)) ](bg:surface0 fg:yellow)'
 
 [java]
-symbol = " "
-style = "peach"
-format = '[$symbol($version )]($style)'
+symbol = " "
+format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:peach)"
 
 [c]
-symbol = " "
-style = "blue"
-format = '[$symbol($version )]($style)'
+symbol = " "
+format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:blue)"
 
 [nodejs]
 symbol = "󰎙 "
-style = "green"
-format = '[$symbol($version )]($style)'
+format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:green)"
 
 [rust]
 symbol = "󱘗 "
-style = "maroon"
-format = '[$symbol($version )]($style)'
+format = "[](bg:surface0 fg:overlay0)[ $symbol($version) ](bg:surface0 fg:maroon)"
 
 [cmd_duration]
 min_time = 2000
-style = "overlay1"
-format = "[󱦟 $duration]($style) "
+format = "[](bg:surface0 fg:overlay0)[ 󱦟 $duration ](bg:surface0 fg:overlay2)"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+format = "[](bg:surface0 fg:overlay0)[ 󰥔 $time ](bg:surface0 fg:sky)"
