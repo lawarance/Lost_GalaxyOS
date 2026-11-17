@@ -19,5 +19,7 @@ foreach ($c in $Configs) {
     } else {
         Copy-Item $c.Repo $c.Live -Force
     }
+    # strip the "downloaded from internet" mark so scripts can run
+    Get-ChildItem $c.Live -Recurse -File -ErrorAction SilentlyContinue | Unblock-File
     Write-Host "  restore  $($c.Name)" -ForegroundColor Green
 }
