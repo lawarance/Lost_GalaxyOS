@@ -45,3 +45,6 @@ mkcd() {
 alias neofetch='fastfetch'
 
 eval "$(oh-my-posh init bash --config "$HOME/.config/ohmyposh/catppuccin_mocha.omp.json")"
+
+stty -ixon 2>/dev/null          # frees Ctrl+Q (normally "resume output")
+bind '"\C-q": kill-whole-line'

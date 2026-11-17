@@ -10,3 +10,5 @@ Clear-Host
 if (Get-Command fastfetch -ErrorAction SilentlyContinue) {
     fastfetch -c "C:/Users/lawar/.config/fastfetch/config.jsonc"
 }
+
+Set-PSReadLineKeyHandler -Chord Ctrl+q -Function RevertLine

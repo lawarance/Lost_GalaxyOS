@@ -13,7 +13,7 @@ args = ["-NoLogo"]
 title = "lost galaxy"
 dynamic_title = true
 decorations = "Full"          # -> "None" once GlazeWM handles borders (task 7)
-opacity = 0.94                # 1.0 = solid · 0.85 = more wallpaper bleed
+opacity = 0.75                # 1.0 = solid · 0.85 = more wallpaper bleed
 padding = { x = 14, y = 10 }
 dynamic_padding = true
 dimensions = { columns = 110, lines = 30 }
@@ -33,6 +33,25 @@ unfocused_hollow = true
 
 [mouse]
 hide_when_typing = true
+bindings = [
+  { mouse = "Right", action = "Paste" },
+]
+
+[keyboard]
+bindings = [
+  # new window (same process = less RAM)
+  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+  # new git bash window
+  { key = "B", mods = "Control|Shift", command = { program = "alacritty", args = ["-e", "C:\\Program Files\\Git\\bin\\bash.exe", "--login", "-i"] } },
+  # jump between prompts / scroll fast
+  { key = "Up",   mods = "Control|Shift", action = "ScrollLineUp" },
+  { key = "Down", mods = "Control|Shift", action = "ScrollLineDown" },
+  { key = "Home", mods = "Control|Shift", action = "ScrollToTop" },
+  { key = "End",  mods = "Control|Shift", action = "ScrollToBottom" },
+  # clear screen + scrollback
+  { key = "K", mods = "Control|Shift", action = "ClearHistory" },
+  { key = "K", mods = "Control|Shift", chars = "\u000c" },
+]
 
 [selection]
 save_to_clipboard = true
