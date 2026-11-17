@@ -11,7 +11,8 @@ alias clean='clear'
 # custom commands 
 # to update .bashrc without restarting terminal
 alias reload='source ~/.bashrc' 
-alias editbash='code ~/.bashrc'
+alias codebash='code ~/.bashrc'
+alias editbash='nano ~/.bashrc'
 
 # to prompt before deleting, overwriting and moving files 
 alias rm='rm -i' 

@@ -5,6 +5,7 @@ $Configs = @(
     @{ Name = "glazewm";     Live = "$HOME\.glzr\glazewm\config.yaml";                Repo = "$Repo\glazewm\config.yaml" }
     @{ Name = "yasb-config"; Live = "$HOME\.config\yasb\config.yaml";                 Repo = "$Repo\yasb\config.yaml" }
     @{ Name = "yasb-styles"; Live = "$HOME\.config\yasb\styles.css";                  Repo = "$Repo\yasb\styles.css" }
+    @{ Name = "alacritty";   Live = "$env:APPDATA\alacritty\alacritty.toml";         Repo = "$Repo\alacritty\alacritty.toml" }
     @{ Name = "terminal";    Live = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"; Repo = "$Repo\terminal\settings.json" }
     @{ Name = "pwsh";        Live = $PROFILE.CurrentUserCurrentHost;                  Repo = "$Repo\powershell\Microsoft.PowerShell_profile.ps1" }
     @{ Name = "bashrc";      Live = "$HOME\.bashrc";                                  Repo = "$Repo\gitbash\.bashrc" }

@@ -1,0 +1,108 @@
+# ✦ Lost Galaxy — Alacritty
+# location: %APPDATA%\alacritty\alacritty.toml
+
+[general]
+live_config_reload = true
+
+[terminal.shell]
+program = "pwsh"
+args = ["-NoLogo"]
+# git bash is launched via:  alacritty -e "C:\Program Files\Git\bin\bash.exe" --login -i
+
+[window]
+title = "lost galaxy"
+dynamic_title = true
+decorations = "Full"          # -> "None" once GlazeWM handles borders (task 7)
+opacity = 0.94                # 1.0 = solid · 0.85 = more wallpaper bleed
+padding = { x = 14, y = 10 }
+dynamic_padding = true
+dimensions = { columns = 110, lines = 30 }
+
+[font]
+size = 11.0
+normal      = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold        = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic      = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+offset = { x = 0, y = 2 }     # a bit of line spacing
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+blink_interval = 600
+unfocused_hollow = true
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+
+# ─── colors: catppuccin mocha · mauve × pink ───────────────────────
+
+[colors.primary]
+background        = "#1e1e2e"
+foreground        = "#cdd6f4"
+dim_foreground    = "#7f849c"
+bright_foreground = "#cdd6f4"
+
+[colors.cursor]
+text   = "#1e1e2e"
+cursor = "#f5e0dc"            # rosewater = galaxy core
+
+[colors.vi_mode_cursor]
+text   = "#1e1e2e"
+cursor = "#b4befe"
+
+[colors.selection]
+text       = "#1e1e2e"
+background = "#cba6f7"        # mauve
+
+[colors.search.matches]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.search.focused_match]
+foreground = "#1e1e2e"
+background = "#f5c2e7"
+
+[colors.footer_bar]
+foreground = "#1e1e2e"
+background = "#cba6f7"
+
+[colors.hints.start]
+foreground = "#1e1e2e"
+background = "#f9e2af"
+
+[colors.hints.end]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.normal]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#cba6f7"           # mauve
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"           # pink
+cyan    = "#89dceb"           # sky = star sparkle
+white   = "#a6adc8"
+
+[colors.dim]
+black   = "#313244"
+red     = "#c87a92"
+green   = "#88b984"
+yellow  = "#cbb990"
+blue    = "#7192cc"
+magenta = "#a687cb"
+cyan    = "#79b8ad"
+white   = "#9399b2"
