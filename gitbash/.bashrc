@@ -66,6 +66,7 @@ alias ll='eza -la --icons --git --group-directories-first'
 alias lt='eza --tree --level=2 --icons --git-ignore'
 
 # bat (cat with syntax colors)
+export BAT_CONFIG_PATH="$HOME/dotfiles/bat/config"
 alias cat='bat'
 
 # fzf (fuzzy finder) — lost galaxy colors

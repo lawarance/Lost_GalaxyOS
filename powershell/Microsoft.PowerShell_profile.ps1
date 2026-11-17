@@ -95,6 +95,7 @@ function ll { eza -la --icons --git --group-directories-first @args }
 function lt { eza --tree --level=2 --icons --git-ignore @args }
 
 # bat (cat with syntax colors)
+$env:BAT_CONFIG_PATH = "$HOME\dotfiles\bat\config"
 Remove-Item Alias:cat -Force -ErrorAction SilentlyContinue
 function cat { bat @args }
 
