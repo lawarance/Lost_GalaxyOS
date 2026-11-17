@@ -1,3 +1,6 @@
+# ✦ Lost Galaxy — YASB
+# location: ~\.config\yasb\config.yaml (+ styles.css) · saves reload live
+
 watch_stylesheet: true
 watch_config: true
 debug: false
@@ -13,31 +16,30 @@ bars:
       align: "center"
     animation:
       enabled: true
-      duration: 1000
+      duration: 200          # snappy · smoother: 400
     blur_effect:
       enabled: true
-      round_corners: true
+      round_corners: false   # full-width bar = sharp outer corners
       dark_mode: true
     window_flags:
       always_on_top: false
       windows_app_bar: true
     dimensions:
       width: "100%"
-      height: 45
+      height: 32             # compact
     layouts:
       center:
         alignment: "center"
         stretch: false
     padding:
       top: 3
-      left: 3
+      left: 4
       bottom: 3
-      right: 3
+      right: 4
     widgets:
-      left: ["home", "clock", "glazewm_workspaces", "active_window"]
-      center: ["media"]
-      # removed trailing comma after power_menu (was creating an empty list item)
-      right: ["hardware-grouper", "systray", "volume", "microphone", "wifi", "bluetooth", "notifications", "power_menu"]
+      left: ["home", "glazewm_workspaces", "active_window"]
+      center: ["clock"]
+      right: ["media", "hardware-grouper", "systray", "volume", "microphone", "wifi", "bluetooth", "notifications", "power_menu"]
 
 widgets:
 
@@ -47,11 +49,12 @@ widgets:
     options:
       blur: true
       round_corners: true
-      label: "<span>\ue22e</span>"
+      label: "<span>\udb81\ude74</span>"   # 󰙴 sparkle
       menu_list:
         - { title: "<span>\ue617</span>&nbsp;&nbsp;&nbsp;Home", path: "~" }
-        - { title: "<span>\udb82\ude0a</span>&nbsp;&nbsp;&nbsp;PowerShell", command: "pwsh.exe", args: ["-NoExit", "-Command", "Set-Location -LiteralPath $env:USERPROFILE"], show_window: true }
-        - { title: "<span>\uebca</span>&nbsp;&nbsp;&nbsp;Git Bash", command: "C:\\Program Files\\Git\\git-bash.exe", args: ["--cd=%USERPROFILE%"], show_window: true }
+        - { title: "<span>\udb82\ude0a</span>&nbsp;&nbsp;&nbsp;PowerShell", command: "alacritty", args: [], show_window: false }
+        - { title: "<span>\uebca</span>&nbsp;&nbsp;&nbsp;Git Bash", command: "alacritty", args: ["-e", "C:\\Program Files\\Git\\bin\\bash.exe", "--login", "-i"], show_window: false }
+        - { title: "<span>\uf07b</span>&nbsp;&nbsp;&nbsp;dotfiles", path: "~\\dotfiles" }
         - { title: "<span>\ueac4</span>&nbsp;&nbsp;&nbsp;VS Code", command: "cmd.exe", args: ["/c", "code"], shell: true }
         - { title: "<span>\uf1bc</span>&nbsp;&nbsp;&nbsp;Spotify", command: "cmd.exe", args: ["/c", "start", "", "spotify:"], shell: true }
         - { title: "<span>\uf1ff</span>&nbsp;&nbsp;&nbsp;Discord", command: "cmd.exe", args: ["/c", "start", "", "discord:"], shell: true }
@@ -68,19 +71,20 @@ widgets:
   clock:
     type: "yasb.clock.ClockWidget"
     options:
-      label: "<span>\uf017</span>{%a. %B %d, %H:%M %p}"
+      label: "<span>\udb82\udd54</span>{%H:%M}"
+      label_alt: "<span>\udb80\udced</span>{%a %d %b}"
       tooltip: false
       timezones: []
       calendar:
         blur: true
         round_corners: true
-        alignment: "left"
+        alignment: "center"
         direction: "down"
         show_week_numbers: true
       callbacks:
         on_left: "toggle_calendar"
         on_middle: "do_nothing"
-        on_right: "do_nothing"
+        on_right: "toggle_label"
 
   systray:
     type: "yasb.systray.SystrayWidget"
@@ -137,13 +141,11 @@ widgets:
       hide_if_offline: true
 
       # Workspace display labels (matching komorebi's label_workspace_btn and label_workspace_active_btn)
-      populated_label: "\udb85\udcfc"
-      empty_label: "\udb85\udcfc"
-      active_populated_label: "\udb85\udcfb"
-      active_empty_label: "\udb85\udcfb"
-
-      # Workspace management (matching komorebi's hide_empty_workspaces)
-      hide_empty_workspaces: false
+      # {display_name} = the symbols from glazewm config (✦ ✧ ⋆ ✶ ✹ ☾ ☄ ◆ ⊙)
+      populated_label: "{display_name}"
+      empty_label: "{display_name}"
+      active_populated_label: "{display_name}"
+      active_empty_label: "{display_name}"
 
       # Server connection
       glazewm_server_uri: "ws://localhost:6123"
@@ -151,11 +153,7 @@ widgets:
       # Additional GlazeWM-specific options (keeping defaults)
       enable_scroll_switching: true
       reverse_scroll_direction: true
-      container_padding:
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
+
 
   # --- Active window title --------------------------------------------------
   active_window:
@@ -257,7 +255,7 @@ widgets:
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
-      label: "<span>\uf4bc</span>CPU: {info[percent][total]}%"
+      label: "<span>\uf4bc</span>{info[percent][total]}%"
       label_alt: "<span>\uf4bc</span> {info[percent][total]}%"
       update_interval: 15000
       hide_decimal: true
@@ -269,7 +267,7 @@ widgets:
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>\uefc5</span>RAM: {virtual_mem_percent}%"
+      label: "<span>\uefc5</span>{virtual_mem_percent}%"
       label_alt: "<span>\uefc5</span> {virtual_mem_percent}%"
       update_interval: 15000
       hide_decimal: true
@@ -281,7 +279,7 @@ widgets:
   gpu:
     type: "yasb.gpu.GpuWidget"
     options:
-      label: "<span>\uf2db</span>GPU: {info[utilization]}%"
+      label: "<span>\uf2db</span>{info[utilization]}%"
       label_alt: "<span>\uf2db</span> {info[utilization]}%"
       update_interval: 15000
       hide_decimal: true
