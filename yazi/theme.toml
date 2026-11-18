@@ -1,0 +1,23 @@
+# ✦ Lost Galaxy — yazi theme
+# location: %APPDATA%\yazi\config\theme.toml
+# base: catppuccin-mocha flavor  (ya pkg add yazi-rs/flavors:catppuccin-mocha)
+# below = lost galaxy accents (mauve / pink instead of blue)
+
+[flavor]
+dark  = "catppuccin-mocha"
+light = "catppuccin-mocha"
+
+[mgr]
+cwd = { fg = "#cba6f7", bold = true }
+
+[tabs]
+active   = { fg = "#11111b", bg = "#cba6f7", bold = true }
+inactive = { fg = "#cba6f7", bg = "#313244" }
+
+[mode]
+normal_main = { fg = "#11111b", bg = "#cba6f7", bold = true }
+normal_alt  = { fg = "#cba6f7", bg = "#313244" }
+select_main = { fg = "#11111b", bg = "#f5c2e7", bold = true }
+select_alt  = { fg = "#f5c2e7", bg = "#313244" }
+unset_main  = { fg = "#11111b", bg = "#f2cdcd", bold = true }
+unset_alt   = { fg = "#f2cdcd", bg = "#313244" }

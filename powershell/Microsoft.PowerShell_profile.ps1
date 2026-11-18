@@ -124,6 +124,16 @@ if (Get-Module -ListAvailable PSFzf) {
 Set-Alias top btop
 Set-Alias lg  lazygit
 
+# yazi: file manager · `y` = open, quit = cd into that folder
+$env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
+function y {
+    $tmp = (New-TemporaryFile).FullName
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp -Encoding UTF8
+    if ($cwd -and $cwd -ne $PWD.Path) { Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path }
+    Remove-Item -Path $tmp
+}
+
 
 # ─── 10. prompt: starship ────────────────────────────────────────
 # config: ~\.config\starship.toml

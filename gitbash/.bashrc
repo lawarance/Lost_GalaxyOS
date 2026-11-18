@@ -91,6 +91,17 @@ alias top='btop'
 alias lg='lazygit'
 
 
+# yazi: file manager · `y` = open, quit = cd into that folder
+export YAZI_FILE_ONE="/c/Program Files/Git/usr/bin/file.exe"
+y() {
+  local tmp cwd; tmp="$(mktemp -t yazi-cwd.XXXXXX)"
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && cwd="$(cygpath "$cwd")" && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
+
 # ─── 7. prompt: starship ─────────────────────────────────────────
 # config: ~/.config/starship.toml
 # fallback prompt if starship isn't installed
