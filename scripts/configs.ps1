@@ -19,6 +19,7 @@ $Configs = @(
     @{ Name = "yazi";        Live = "$env:APPDATA\yazi\config\yazi.toml";            Repo = "$Repo\yazi\yazi.toml" }
     @{ Name = "yazi-theme";  Live = "$env:APPDATA\yazi\config\theme.toml";           Repo = "$Repo\yazi\theme.toml" }
     @{ Name = "yazi-keys";   Live = "$env:APPDATA\yazi\config\keymap.toml";          Repo = "$Repo\yazi\keymap.toml" }
+    @{ Name = "flow-theme";  Live = "$env:APPDATA\FlowLauncher\Themes\Lost Galaxy.xaml"; Repo = "$Repo\flowlauncher\Lost Galaxy.xaml" }
     @{ Name = "nvim";        Live = "$env:LOCALAPPDATA\nvim";                         Repo = "$Repo\nvim"; Dir = $true }
     @{ Name = "vscode";      Live = "$env:APPDATA\Code\User\settings.json";           Repo = "$Repo\vscode\settings.json" }
     @{ Name = "vscode-keys"; Live = "$env:APPDATA\Code\User\keybindings.json";        Repo = "$Repo\vscode\keybindings.json" }
