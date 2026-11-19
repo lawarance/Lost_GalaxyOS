@@ -1,37 +1,38 @@
 # ✦ Lost Galaxy
 
 ```
-   </>   lost galaxy — windows rice
-         catppuccin mocha · mauve × pink · pixel art
+   ✦   lost galaxy — windows rice
+       catppuccin mocha · mauve × pink · pixel art
 ```
 
 ## stack
 | | |
 |---|---|
-| wm | GlazeWM |
-| bar | YASB |
-| terminal | Windows Terminal · PowerShell · Git Bash |
-| fetch | fastfetch |
-| editors | LazyVim · VS Code |
-| browser | Opera GX + Stylus |
+| terminal | Alacritty · PowerShell 7 · Git Bash |
+| prompt | Starship (arrow bar) |
+| cli | eza · bat · fzf · zoxide · ripgrep · fd · lazygit · btop · yazi |
+| fetch | fastfetch (per-row gradient galaxy) |
+| wm / bar | GlazeWM · YASB *(paused)* |
+| launcher | Flow Launcher (`Alt+Q`) |
+| windows | Windhawk: Translucent Windows · File Explorer Styler · Notification Center Styler |
+| cursors | Lost Galaxy pixel pack (3 animated) |
 | font | JetBrainsMono Nerd Font 11pt |
 
-## palette
-`palette/lost-galaxy.json` = single source of truth.
-
-| role | color |
+## folders
+| folder | what |
 |---|---|
-| accent | `#cba6f7` mauve |
-| accent2 | `#f5c2e7` pink |
-| highlight | `#f5e0dc` rosewater |
-| sparkle | `#89dceb` sky |
-| bg | `#11111b` crust |
-
-workspaces: `✦ ✧ ⋆ ✶ ✹ ☾ ☄ ◆ ⊙`
+| `palette/` | colors (single source of truth) |
+| `alacritty/ starship/ powershell/ gitbash/` | terminal + shells |
+| `bat/ fastfetch/ yazi/` | cli tools |
+| `glazewm/ yasb/ flowlauncher/ windhawk/` | desktop |
+| `cursors/ identity/ wallpaper/` | look & identity |
+| `packages/` | `scoop import packages\scoop.json` |
+| `scripts/` | sync · restore · save |
 
 ## usage
 ```powershell
-.\scripts\sync.ps1              # live -> repo, then commit
-.\scripts\restore.ps1           # repo -> live (makes .bak)
-.\scripts\restore.ps1 glazewm   # just one
+dots -m "msg"                     # live -> repo, commit, push
+.\scripts\restore.ps1 <name>      # repo -> live (makes .bak)
+.\cursors\install.ps1             # cursors
+.\windhawk\apply.ps1              # windhawk mod settings (admin)
 ```

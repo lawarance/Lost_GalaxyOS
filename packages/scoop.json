@@ -3,14 +3,14 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main.git",
-            "Updated": "2026-11-16T21:23:54+01:00",
-            "Manifests": 1715
+            "Updated": "2026-11-18T21:23:41+01:00",
+            "Manifests": 1719
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2026-11-16T21:23:56+01:00",
-            "Manifests": 2470
+            "Updated": "2026-11-18T21:23:38+01:00",
+            "Manifests": 2474
         },
         {
             "Name": "nerd-fonts",
@@ -20,6 +20,20 @@
         }
     ],
     "apps": [
+        {
+            "Name": "7zip",
+            "Version": "26.06",
+            "Source": "main",
+            "Updated": "2026-11-19T00:22:30.4641227+01:00",
+            "Info": ""
+        },
+        {
+            "Name": "alacritty",
+            "Version": "0.17.0",
+            "Source": "extras",
+            "Updated": "2026-11-17T07:37:50.7218328+01:00",
+            "Info": ""
+        },
         {
             "Name": "bat",
             "Version": "0.26.1",
@@ -49,6 +63,13 @@
             "Info": ""
         },
         {
+            "Name": "ffmpeg",
+            "Version": "9.0.2",
+            "Source": "main",
+            "Updated": "2026-11-19T00:22:52.2570636+01:00",
+            "Info": ""
+        },
+        {
             "Name": "fzf",
             "Version": "0.75.0",
             "Source": "main",
@@ -56,10 +77,31 @@
             "Info": ""
         },
         {
+            "Name": "imagemagick",
+            "Version": "7.1.2-36",
+            "Source": "main",
+            "Updated": "2026-11-19T00:23:26.1386361+01:00",
+            "Info": ""
+        },
+        {
+            "Name": "innounp",
+            "Version": "2.71.3",
+            "Source": "main",
+            "Updated": "2026-11-19T00:23:13.5650177+01:00",
+            "Info": ""
+        },
+        {
             "Name": "JetBrainsMono-NF",
             "Version": "3.5.1",
             "Source": "nerd-fonts",
             "Updated": "2026-11-16T22:33:56.8094703+01:00",
+            "Info": ""
+        },
+        {
+            "Name": "jq",
+            "Version": "1.8.2",
+            "Source": "main",
+            "Updated": "2026-11-19T00:22:53.1437095+01:00",
             "Info": ""
         },
         {
@@ -77,10 +119,24 @@
             "Info": ""
         },
         {
+            "Name": "poppler",
+            "Version": "26.09.0-0",
+            "Source": "main",
+            "Updated": "2026-11-19T00:23:12.7307902+01:00",
+            "Info": ""
+        },
+        {
             "Name": "ripgrep",
             "Version": "15.2.0",
             "Source": "main",
             "Updated": "2026-11-16T22:34:14.6786231+01:00",
+            "Info": ""
+        },
+        {
+            "Name": "starship",
+            "Version": "1.27.0",
+            "Source": "main",
+            "Updated": "2026-11-17T09:26:52.366368+01:00",
             "Info": ""
         },
         {
