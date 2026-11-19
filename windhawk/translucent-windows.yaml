@@ -1,0 +1,58 @@
+RenderingMod:
+  ThemeBackground: 1
+  SysColors: 0
+  AccentColorControls: 1
+BackgroundEffects:
+  type: acrylicblur
+  AccentBlurBehind: A611111B
+FlyoutsEffects: 1
+RuledPrograms:
+  - target: opera.exe
+    RenderingMod:
+      ThemeBackground: 0
+      AccentColorControls: 0
+    BackgroundEffects:
+      type: none
+      AccentBlurBehind: A611111B
+  - target: Code.exe
+    RenderingMod:
+      ThemeBackground: 0
+      AccentColorControls: 0
+    BackgroundEffects:
+      type: none
+      AccentBlurBehind: A611111B
+  - target: Discord.exe
+    RenderingMod:
+      ThemeBackground: 0
+      AccentColorControls: 0
+    BackgroundEffects:
+      type: none
+      AccentBlurBehind: A611111B
+  - target: Spotify.exe
+    RenderingMod:
+      ThemeBackground: 0
+      AccentColorControls: 0
+    BackgroundEffects:
+      type: none
+      AccentBlurBehind: A611111B
+  - target: steamwebhelper.exe
+    RenderingMod:
+      ThemeBackground: 0
+      AccentColorControls: 0
+    BackgroundEffects:
+      type: none
+      AccentBlurBehind: A611111B
+  - target: yasb.exe
+    RenderingMod:
+      ThemeBackground: 0
+      AccentColorControls: 0
+    BackgroundEffects:
+      type: none
+      AccentBlurBehind: A611111B
+  - target: Flow.Launcher.exe
+    RenderingMod:
+      ThemeBackground: 0
+      AccentColorControls: 0
+    BackgroundEffects:
+      type: none
+      AccentBlurBehind: A611111B

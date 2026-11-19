@@ -1,0 +1,5 @@
+theme: TintedGlass
+styleConstants:
+  - 'Base=<WindhawkBlur BlurAmount="20" TintColor="#B311111B"/>'
+  - 'Overlay=<WindhawkBlur BlurAmount="18" TintColor="#26CBA6F7"/>'
+  - 'Radius=12'

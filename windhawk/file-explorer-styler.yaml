@@ -1,0 +1,9 @@
+theme: TintedGlass
+backgroundTranslucentEffect: ''
+backgroundTranslucentEffectRegion: ''
+styleConstants:
+  - 'CommonBgBrush=<WindhawkBlur BlurAmount="18" TintColor="#A611111B"/>'
+  - 'CornerRadius=10'
+  - 'ElementCornerRadius=6'
+explorerFrameContainerHeight: 0
+xamlDiagnosticsHandling: alert

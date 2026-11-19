@@ -8,11 +8,11 @@
   "logo": {
     // raw file = one truecolor per row (14 steps), escapes baked into the file
     // regenerate colors: ask claude / edit the 38;2;R;G;B codes
-    "type": "file-raw",
+    "type": "raw",          // raw = printed as-is, uses width/height below (file-raw counted the color codes as width)
     "source": "~/.config/fastfetch/ascii-raw.txt",
     "width": 26,
     "height": 14,
-    "padding": { "top": 1, "left": 1, "right": 4 }
+    "padding": { "top": 1, "left": 1, "right": 2 }   // right = gap between logo and text
   },
 
   // ─── look ───
