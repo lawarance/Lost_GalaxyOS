@@ -143,6 +143,17 @@ workspaces:
     display_name: "⊙"
 
 window_rules:
+  # ✦ fix: chromium/electron apps sometimes get pushed into fullscreen when switching
+  #   workspaces → force them back to tiling every time they get focus.
+  #   matches by window class, so EVERY chromium/electron app is covered automatically
+  #   (opera, chrome, edge, vs code, discord, spotify, obsidian, steam, teams, notion…)
+  - commands: ["set-tiling"]
+    match:
+      - window_class: { equals: "Chrome_WidgetWin_1" }
+        window_title: { not_regex: "[Pp]icture.in.[Pp]icture" }
+    "on": ["focus"]
+    run_once: false
+
   - commands: ["ignore"]
     match:
       # Ignores any Zebar windows.

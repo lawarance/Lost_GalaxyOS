@@ -58,8 +58,7 @@ Set-Alias make mingw32-make
 # ─── 7. dotfiles: sync + commit + push ───────────────────────────
 # usage: dots -m "message"
 
-function dots { & "$HOME\dotfiles\scripts\save.ps1" @args }
-
+function dots { Get-ChildItem "$HOME\dotfiles\scripts" -File | Unblock-File; & "$HOME\dotfiles\scripts\save.ps1" @args }
 
 # ─── 8. PSReadLine: keybinds + colors ────────────────────────────
 
