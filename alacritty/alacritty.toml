@@ -12,7 +12,7 @@ args = ["-NoLogo"]
 [window]
 title = "lost galaxy"
 dynamic_title = true
-decorations = "None"          # no title bar · glazewm draws the border
+decorations = "Full"          # -> "None" once GlazeWM handles borders (task 7)
 opacity = 0.75                # 1.0 = solid · 0.85 = more wallpaper bleed
 padding = { x = 14, y = 10 }
 dynamic_padding = true

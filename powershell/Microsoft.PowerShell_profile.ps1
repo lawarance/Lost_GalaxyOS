@@ -94,7 +94,7 @@ function ls { eza --icons --group-directories-first @args }
 function ll { eza -la --icons --git --group-directories-first @args }
 function lt { eza --tree --level=2 --icons --git-ignore @args }
 
-# bat (cat with syntax colors) · scoop's bat ignores %APPDATA%, so point it at the repo config
+# bat (cat with syntax colors)
 $env:BAT_CONFIG_PATH = "$HOME\dotfiles\bat\config"
 Remove-Item Alias:cat -Force -ErrorAction SilentlyContinue
 function cat { bat @args }
@@ -120,6 +120,10 @@ if (Get-Module -ListAvailable PSFzf) {
     Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 }
 
+# btop / lazygit
+Set-Alias top btop
+Set-Alias lg  lazygit
+
 # yazi: file manager · `y` = open, quit = cd into that folder
 $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
 function y {
@@ -129,13 +133,6 @@ function y {
     if ($cwd -and $cwd -ne $PWD.Path) { Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path }
     Remove-Item -Path $tmp
 }
-
-# neovim (LazyVim)
-Set-Alias v nvim
-
-# btop / lazygit
-Set-Alias top btop
-Set-Alias lg  lazygit
 
 
 # ─── 10. prompt: starship ────────────────────────────────────────

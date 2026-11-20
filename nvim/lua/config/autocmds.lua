@@ -1,1 +1,0 @@
--- ✦ Lost Galaxy — autocmds (LazyVim defaults are enough for now)
