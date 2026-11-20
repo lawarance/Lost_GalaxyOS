@@ -28,6 +28,9 @@
 | `cursors/ identity/ wallpaper/` | look & identity |
 | `packages/` | `scoop import packages\scoop.json` |
 | `scripts/` | sync · restore · save |
+| `nvim/ vscode/` | editors (LazyVim · VS Code) |
+| `stylus/ spicetify/ vencord/ nilesoft/` | apps |
+| `preview/` | install / revert the full preview — see `preview/PREVIEW.md` |
 
 ## usage
 ```powershell

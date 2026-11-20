@@ -65,7 +65,7 @@ alias ls='eza --icons --group-directories-first'
 alias ll='eza -la --icons --git --group-directories-first'
 alias lt='eza --tree --level=2 --icons --git-ignore'
 
-# bat (cat with syntax colors)
+# bat (cat with syntax colors) · scoop's bat ignores %APPDATA%, so point it at the repo config
 export BAT_CONFIG_PATH="$HOME/dotfiles/bat/config"
 alias cat='bat'
 
@@ -86,11 +86,6 @@ fe() { local f; f=$(fp) && [ -n "$f" ] && code "$f"; }
 # Ctrl+T = insert file path · Ctrl+R = fuzzy history · Alt+C = cd into dir
 command -v fzf &>/dev/null && eval "$(fzf --bash 2>/dev/null)"
 
-# btop / lazygit
-alias top='btop'
-alias lg='lazygit'
-
-
 # yazi: file manager · `y` = open, quit = cd into that folder
 export YAZI_FILE_ONE="/c/Program Files/Git/usr/bin/file.exe"
 y() {
@@ -100,6 +95,13 @@ y() {
   [ -n "$cwd" ] && cwd="$(cygpath "$cwd")" && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
+
+# neovim (LazyVim)
+alias v='nvim'
+
+# btop / lazygit
+alias top='btop'
+alias lg='lazygit'
 
 
 # ─── 7. prompt: starship ─────────────────────────────────────────

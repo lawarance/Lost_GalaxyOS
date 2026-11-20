@@ -1,0 +1,3 @@
+# ✦ Lost Galaxy — VS Code extensions (installed by preview/install-preview.ps1)
+Catppuccin.catppuccin-vsc
+Catppuccin.catppuccin-vsc-icons

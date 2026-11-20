@@ -20,18 +20,19 @@ FONT = {  # 3x5
     "H": ["#.#", "#.#", "###", "#.#", "#.#"],
 }
 
-def make(pose):
+def make(pose, transparent=False):
     img = Image.new("RGBA", (N, N)); px = img.load()
     # background
-    for y in range(N):
+    for y in range(N if not transparent else 0):
         for x in range(N): px[x, y] = mix(C["void"], C["crust"], y / (N - 1))
     random.seed(3)
-    for _ in range(10):
+    for _ in range(10 if not transparent else 0):
         x, y = random.randrange(N), random.randrange(N); px[x, y] = random.choice([C["s1"], C["ov0"]])
     def star(x, y, core, arm):
         px[x, y] = core
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)): px[x + dx, y + dy] = arm
-    star(3, 4, C["lav"], C["deep"]); star(28, 6, C["yel"], C["s1"]); px[2, 17] = C["pink"]; px[29, 15] = C["sky"]
+    if not transparent:
+        star(3, 4, C["lav"], C["deep"]); star(28, 6, C["yel"], C["s1"]); px[2, 17] = C["pink"]; px[29, 15] = C["sky"]
 
     fill = {}
     def F(x, y, c):
@@ -137,8 +138,10 @@ def make(pose):
                 p = (x + dx, y + dy)
                 if 0 <= p[0] < N and 0 <= p[1] < N and p not in fill: px[p] = C["void"]
     for (x, y), c in fill.items(): px[x, y] = c
+    if transparent: return img
     for size in (512, 448):
         img.resize((size, size), Image.NEAREST).save(f"/home/claude/cursors/astronaut-{pose}-{size}.png")
 
-for pose in ("star", "arms"): make(pose)
-print("ok")
+if __name__ == "__main__":
+    for pose in ("star", "arms"): make(pose)
+    print("ok")

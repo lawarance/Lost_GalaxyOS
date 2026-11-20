@@ -1,0 +1,21 @@
+/* ==UserStyle==
+@name           ✦ Lost Galaxy — global
+@namespace      lost-galaxy
+@version        1.0.0
+@description    scrollbars, text selection and focus rings in Lost Galaxy colors on every site
+@author         SamDHam
+@preprocessor   default
+==/UserStyle== */
+
+@-moz-document regexp("https?://.*") {
+  ::selection { background: #cba6f7 !important; color: #11111b !important; }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #11111b; }
+  ::-webkit-scrollbar-thumb { background: #45475a; border-radius: 6px; border: 2px solid #11111b; }
+  ::-webkit-scrollbar-thumb:hover { background: #cba6f7; }
+  ::-webkit-scrollbar-corner { background: #11111b; }
+
+  :focus-visible { outline: 2px solid #cba6f7 !important; outline-offset: 2px; }
+  input, textarea { caret-color: #f5e0dc; }
+}

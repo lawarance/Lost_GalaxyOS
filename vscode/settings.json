@@ -12,9 +12,6 @@
     "terminal.integrated.automationProfile.windows": {},
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "code-runner.executorMap": {
-
-
-
         "javascript": "node",
         "java": "clear && cd $dir && javac $fileName && java $fileNameWithoutExt",
         "c": "gcc $fileName -o $fileNameWithoutExt.exe && ./$fileNameWithoutExt.exe",
@@ -122,5 +119,44 @@
         "*.out": "default"
     },
     "editor.minimap.enabled": false,
-    "jupyter.askForKernelRestart": false
+    "jupyter.askForKernelRestart": false,
+    "catppuccin.accentColor": "mauve",
+    "catppuccin.boldKeywords": true,
+    "catppuccin.italicComments": true,
+    "catppuccin.workbenchMode": "flat",
+    "catppuccin.bracketMode": "rainbow",
+    "catppuccin.customUIColors": {
+        "mocha": {
+            "statusBar.background": "crust",
+            "statusBar.foreground": "subtext0",
+            "activityBarBadge.background": "mauve",
+            "focusBorder": "mauve",
+            "editorCursor.foreground": "rosewater",
+            "tab.activeBorderTop": "mauve",
+            "titleBar.activeBackground": "crust"
+        }
+    },
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', 'JetBrains Mono', Consolas, monospace",
+    "editor.fontSize": 15,
+    "editor.lineHeight": 1.6,
+    "editor.fontLigatures": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.smoothScrolling": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.renderLineHighlight": "all",
+    "editor.stickyScroll.enabled": true,
+    "editor.padding.top": 8,
+    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font'",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.cursorBlinking": true,
+    "workbench.tree.indent": 14,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.list.smoothScrolling": true,
+    "workbench.startupEditor": "none",
+    "window.titleBarStyle": "custom",
+    "window.commandCenter": true,
+    "breadcrumbs.enabled": true
 }

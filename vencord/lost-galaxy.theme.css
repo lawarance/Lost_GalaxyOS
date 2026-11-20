@@ -1,0 +1,11 @@
+/**
+ * @name ✦ Lost Galaxy
+ * @author SamDHam
+ * @version 1.0.0
+ * @description Catppuccin Mocha with mauve accent + JetBrains Mono for code blocks
+ */
+@import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-mauve.theme.css");
+
+:root {
+  --font-code: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
+}
